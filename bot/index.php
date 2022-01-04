@@ -13,6 +13,7 @@ function answerBot(){
             'chat_id' => $data->message->chat->id,
             'text' => 'и тебе Привет'
         ]));
+        echo $result ;
     }elseif($Text != 'Привет'){
         $result = file_get_contents(API.'sendMessage?'.http_build_query([
             'chat_id' => $data->message->chat->id,
