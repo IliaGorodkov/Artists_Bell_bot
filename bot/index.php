@@ -1,5 +1,15 @@
 <?php
+ $result = file_get_contents('https://api.telegram.org/bot2009982557:AAGwlzdC8DbZ9c3lRu0kFDwjbkoPn-gUz9s/getUpdates');
 
+print_r($result);
+
+
+
+
+
+
+
+/*
 define('TOKEN', getenv('token'));
 define('API','https://api.telegram.org/bot'.TOKEN.'/');
 
@@ -22,6 +32,6 @@ function answerBot(){
 
 }
 answerBot();
-
+*/
 
 ?>
