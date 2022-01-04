@@ -24,20 +24,24 @@ function answerBot(){
 }
 answerBot();
 
-
-$replyMarkup = array(
-    'keyboard' => array(
-        array("A", "B")
-    )
-);
-$encodedMarkup = json_encode($replyMarkup);
-$content = array(
-    'chat_id' => $chat_id,
-    'reply_markup' => $encodedMarkup,
-    'text' => "Test"
+$keyboard = array(
+        array('text'=>'/start'),
+        array('text'=>'/hi'),
 );
 
 
+$reply_markup = $telegram->replyKeyboardMarkup([
+    'keyboard' => $keyboard, 
+    'resize_keyboard' => true, 
+    'one_time_keyboard' => true
+]);
 
+$response = $telegram->sendMessage([
+    'chat_id' => $chat_id, 
+    'text' => 'Hello World', 
+    'reply_markup' => $reply_markup
+]);
+
+$messageId = $response->getMessageId();
 
 ?>
