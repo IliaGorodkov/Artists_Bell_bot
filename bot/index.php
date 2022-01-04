@@ -13,6 +13,11 @@ define('API','https://api.telegram.org/bot'.TOKEN.'/');
             'chat_id' => $data->message->chat->id,
             'text' => 'и тебе Привет'
         ]));
+    }elseif($Text != 'Привет'){
+        $result = file_get_contents(API.'sendMessage?'.http_build_query([
+            'chat_id' => $data->message->chat->id,
+            'text' => 'Не могу понять что вы написали, напишите Привет.'
+        ]));
     }
 
 /*
@@ -20,6 +25,6 @@ define('API','https://api.telegram.org/bot'.TOKEN.'/');
             'chat_id' => $data->message->chat->id,
             'text' => $data->message->text
     ]));
-*/
+/
 
 ?>
