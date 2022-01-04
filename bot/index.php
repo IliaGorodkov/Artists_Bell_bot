@@ -11,8 +11,8 @@ define('API','https://api.telegram.org/bot'.TOKEN.'/');
             'text' => $data->message->text
     ]));
 
-    if($result['text'] == 'Привет'){
-        return 'и тебе Привет';
+    if($result == 'Привет'){
+        echo 'и тебе Привет';
     }
 
 
