@@ -6,17 +6,30 @@ define('TOKEN', getenv('token'));
 //define('API','https://api.telegram.org/bot'.TOKEN.'/');
 
 $query = curl_init('https://api.telegram.org/bot'.TOKEN.'/');
-echo($query.'/-/');
+
 curl_setopt($query, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($query, CURLOPT_SSL_VERIFYPEER, false);
 curl_setopt($query, CURLOPT_HEADER, false);
 $resultCURL = curl_exec($query);
-print_r('/-/'.$resultCURL);
+
 curl_close($query);
-print_r('/-/'.$resultCURL);
+
+function ResponseBot($resultCURL){
+    $data = json_decode(file_get_contents('php://input'));
+
+    $result = file_get_contents($resultCURL.'sendMessage?'.http_build_query([
+            'chat_id' => $data->message->chat->id,
+            'text' => $data->message->text
+    ]));
+
+        return $result;
+}
+
+ResponseBot("");
 
 
 //print_r(API);
+/*
 $data = json_decode(file_get_contents('php://input'));
 
 $result = file_get_contents($resultCURL.'sendMessage?'.http_build_query([
@@ -24,4 +37,8 @@ $result = file_get_contents($resultCURL.'sendMessage?'.http_build_query([
         'text' => $data->message->text
     ]));
 print_r($result);
+*/
+
+
+
 ?>
