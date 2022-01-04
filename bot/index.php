@@ -12,13 +12,4 @@ curl_close($query);
 print_r($result);
 
 
-
-
-
-
-
-
-
-
-
 ?>
