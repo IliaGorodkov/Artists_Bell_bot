@@ -13,7 +13,7 @@ print_r($result);
 */
 
 define('TOKEN', getenv('token'));
-define('API','https://api.telegram.org/bot'.'TOKEN'.'/'.'getMe');
+define('API','https://api.telegram.org/bot'.TOKEN.'/'.'getMe');
 print_r(API);
 $data = json_decode(file_get_contents('php://input'));
 
