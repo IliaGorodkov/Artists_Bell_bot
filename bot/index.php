@@ -1,5 +1,5 @@
 <?php
-/*
+
 define('TOKEN', getenv('token'));
 define('API','https://api.telegram.org/bot'.TOKEN.'/');
 
@@ -15,11 +15,8 @@ function ResponseBot(){
     if($result['text'] == 'Привет'){
         return 'и тебе Привет';
     }
-
-
-        return $result;
 }
-*/
-echo ResponseBot();
+
+
 
 ?>
