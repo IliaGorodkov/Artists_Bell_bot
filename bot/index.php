@@ -10,8 +10,7 @@ define('API','https://api.telegram.org/bot'.TOKEN.'/');
             'chat_id' => $data->message->chat->id,
             'text' => $data->message->text
     ]));
-    printf($result.'/-/');
-    print_r($result.'/--/');
+
     if($result['text'] == 'Привет'){
         return 'и тебе Привет';
     }
