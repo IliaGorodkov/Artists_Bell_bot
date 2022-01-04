@@ -14,7 +14,6 @@ print_r($result);
 
 define('TOKEN', getenv('token'));
 define('API','https://api.telegram.org/bot'.'TOKEN'.'/');
-print_r(TOKEN);
 
 $data = json_decode(file_get_contents('php://input'));
 
