@@ -1,5 +1,5 @@
 <?php
-
+/*
 define('TOKEN', getenv('token'));
 define('API','https://api.telegram.org/bot'.TOKEN.'/');
 
@@ -19,7 +19,7 @@ function ResponseBot(){
 
         return $result;
 }
-
+*/
 echo ResponseBot();
 
 ?>
