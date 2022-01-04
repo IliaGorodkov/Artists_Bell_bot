@@ -24,11 +24,12 @@ function answerBot(){
 }
 answerBot();
 
-$keyboard = array(
-        array('text'=>'/start'),
-        array('text'=>'/hi'),
-);
-
+$keyboard = [
+    ['7', '8', '9'],
+    ['4', '5', '6'],
+    ['1', '2', '3'],
+         ['0']
+];
 
 $reply_markup = $telegram->replyKeyboardMarkup([
     'keyboard' => $keyboard, 
@@ -43,5 +44,4 @@ $response = $telegram->sendMessage([
 ]);
 
 $messageId = $response->getMessageId();
-
 ?>
