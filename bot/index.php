@@ -1,6 +1,5 @@
 <?php
 
-
 define('TOKEN', getenv('token'));
 define('API','https://api.telegram.org/bot'.TOKEN.'/');
 
@@ -14,15 +13,14 @@ function answerBot(){
             'chat_id' => $data->message->chat->id,
             'text' => 'И тебе Привет '. $Name
         ]));
-    }elseif($Text != 'Привет'){
+    }elseif($Text == 'Пока'||'Пака'||'бб'||'Досвидос'){
         $result = file_get_contents(API.'sendMessage?'.http_build_query([
             'chat_id' => $data->message->chat->id,
-            'text' => 'Не могу понять что вы написали, напишите Привет.'
+            'text' => 'Пока'||'ББ'
         ]));
     }
 
 }
 answerBot();
-
 
 ?>
