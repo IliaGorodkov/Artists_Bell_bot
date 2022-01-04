@@ -8,15 +8,16 @@ function answerBot(){
 
     $Text = $data->message->text;
     $Name = $data->message->from->first_name;
-    if($Text == 'Привет'||$Text == 'привет'){
+
+    if($Text=='Привет'||$Text=='привет'){
         $result = file_get_contents(API.'sendMessage?'.http_build_query([
             'chat_id' => $data->message->chat->id,
             'text' => 'И тебе Привет '. $Name
         ]));
-    }elseif($Text == 'Пока'||$Text == 'Пака'||$Text =='бб'||$Text =='Досвидос'){
+    }elseif($Text=='Пока'||$Text=='Пака'||$Text=='бб'||$Text=='Досвидос'){
         $result = file_get_contents(API.'sendMessage?'.http_build_query([
             'chat_id' => $data->message->chat->id,
-            'text' => 'Пока'. $Name
+            'text' => 'Досвидания '. $Name
         ]));
     }
 
