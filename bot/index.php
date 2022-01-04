@@ -25,7 +25,7 @@ function ResponseBot($resultCURL){
         return $result;
 }
 
-ResponseBot("");
+echo ResponseBot("");
 
 
 //print_r(API);
