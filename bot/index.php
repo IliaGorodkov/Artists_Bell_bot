@@ -8,11 +8,11 @@ function answerBot(){
     $data = json_decode(file_get_contents('php://input'));
 
     $Text = $data->message->text;
-
+    $Name = $data->message->first_name;
     if($Text == 'Привет'){
         $result = file_get_contents(API.'sendMessage?'.http_build_query([
             'chat_id' => $data->message->chat->id,
-            'text' => 'и тебе Привет'
+            'text' => 'и тебе Привет'. $Name
         ]));
     }elseif($Text != 'Привет'){
         $result = file_get_contents(API.'sendMessage?'.http_build_query([
