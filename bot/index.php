@@ -14,11 +14,11 @@ print_r($result);
 
 define('TOKEN', getenv('token'));
 define('API','https://api.telegram.org/bot'.'TOKEN'.'/');
+print_r(TOKEN);
 
 $data = json_decode(file_get_contents('php://input'));
 
-$result = file_get_contents(API.'sendMessage?'. http_build_query(
-    [
+$result = file_get_contents(API.'sendMessage?'.http_build_query([
         'chat_id' => $data->message->chat->id,
         'text' => $data->message->text
     ]));
