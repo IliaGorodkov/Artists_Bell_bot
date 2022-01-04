@@ -6,7 +6,7 @@ define('TOKEN', getenv('token'));
 //define('API','https://api.telegram.org/bot'.TOKEN.'/');
 
 $query = curl_init('https://api.telegram.org/bot'.TOKEN.'/');
-
+var_dump($query.'/-/');
 curl_setopt($query, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($query, CURLOPT_SSL_VERIFYPEER, false);
 curl_setopt($query, CURLOPT_HEADER, false);
