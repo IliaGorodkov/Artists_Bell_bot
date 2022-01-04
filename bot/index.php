@@ -9,9 +9,7 @@ curl_setopt($query, CURLOPT_HEADER, false);
 $result = curl_exec($query);
 curl_close($query);
  
-echo'222222222222222222222222222222222';
-
-//print_r($result);
+print_r($result);
 
 
 ?>
