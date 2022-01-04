@@ -9,11 +9,14 @@ function answerBot(){
     $Text = $data->message->text;
 
     if($Text == 'Привет'){
-        $result = file_get_contents(API.'sendMessage?'.http_build_query([
+      /*  $result = file_get_contents(API.'sendMessage?'.http_build_query([
             'chat_id' => $data->message->chat->id,
-            'text' => 'и тебе 2'
+            'text' => 'и тебе Привет'
+        ]));*/
+        $result = file_get_contents(API.'getMe?'.http_build_query([
+            'chat_id' => $data->message->chat->id,
         ]));
-        return $result;
+        print_r($result);
     }elseif($Text != 'Привет'){
         $result = file_get_contents(API.'sendMessage?'.http_build_query([
             'chat_id' => $data->message->chat->id,
