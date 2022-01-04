@@ -3,7 +3,7 @@
 define('TOKEN', getenv('token'));
 define('API','https://api.telegram.org/bot'.TOKEN.'/');
 
-
+function answerBot(){
     $data = json_decode(file_get_contents('php://input'));
 
     $Text = $data->message->text;
@@ -19,6 +19,9 @@ define('API','https://api.telegram.org/bot'.TOKEN.'/');
             'text' => 'Не могу понять что вы написали, напишите Привет.'
         ]));
     }
+
+}
+answerBot();
 
 /*
     $result = file_get_contents(API.'sendMessage?'.http_build_query([
