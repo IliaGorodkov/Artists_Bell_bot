@@ -24,7 +24,7 @@ function answerBot(){
     }elseif($Text=="/about"){
         $result = file_get_contents(API.'sendMessage?'.http_build_query([
             'chat_id' => $chat_id,
-            'text' => "Этого Бота создал Программист-Красавчик Илья:)"
+            'text' => "Этого Бота создал Программист-Красавчик Илья \xF0\x9F\x98\x81"
         ]));
     }
     elseif($Text=='Пока'||$Text=='пока'||$Text=='Пака'||$Text=='пака'||$Text=='ББ'||$Text=='бб'||$Text=='Досвидос'){
