@@ -8,19 +8,44 @@ function answerBot(){
 
     $chat_id = $data->message->chat->id;
     $Text = $data->message->text;
-    $Name = $data->message->from->first_name;
+    $first_name = $data->message->from->first_name;
 
-    if($Text=='Привет'||$Text=='привет'){
+
+
+
+    if($Text=="/help"){
         $result = file_get_contents(API.'sendMessage?'.http_build_query([
             'chat_id' => $chat_id,
-            'text' => 'И тебе Привет '. $Name
+            'text' => "Привет, $first_name, вот команды, что я понимаю:
+            /help - список команд
+            /about - о нас
+            "
         ]));
-    }elseif($Text=='Пока'||$Text=='пока'||$Text=='Пака'||$Text=='пака'||$Text=='ББ'||$Text=='бб'||$Text=='Досвидос'){
+    }elseif($Text=="/about"){
         $result = file_get_contents(API.'sendMessage?'.http_build_query([
             'chat_id' => $chat_id,
-            'text' => 'Досвидания '. $Name
+            'text' => "Этого Бота создал Программист-Красавчик Илья:)"
         ]));
     }
+    elseif($Text=='Пока'||$Text=='пока'||$Text=='Пака'||$Text=='пака'||$Text=='ББ'||$Text=='бб'||$Text=='Досвидос'){
+        $result = file_get_contents(API.'sendMessage?'.http_build_query([
+            'chat_id' => $chat_id,
+            'text' => 'Досвидания '. $first_name
+        ]));
+    }elseif($Text=='Привет'||$Text=='привет'){
+        $result = file_get_contents(API.'sendMessage?'.http_build_query([
+            'chat_id' => $chat_id,
+            'text' => 'И тебе Привет '. $first_name
+        ]));
+    }
+
+
+
+
+
+
+
+
 }
 answerBot();
 
