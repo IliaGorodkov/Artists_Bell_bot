@@ -16,10 +16,7 @@ function answerBot(){
     if($Text=="/help"){
         $result = file_get_contents(API.'sendMessage?'.http_build_query([
             'chat_id' => $chat_id,
-            'text' => "Привет, $first_name, вот команды, что я понимаю:
-            /help - список команд
-            /about - о нас
-            "
+            'text' => "Привет, $first_name, вот команды, что я понимаю:\n/help - список команд \n/about - о нас"
         ]));
     }elseif($Text=="/about"){
         $result = file_get_contents(API.'sendMessage?'.http_build_query([
