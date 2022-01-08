@@ -5,7 +5,33 @@ define('API','https://api.telegram.org/bot'.TOKEN.'/');
 
 
 
+function botApiQuery(){
 
+    $data = json_decode(file_get_contents('php://input'));
+
+    $chat_id = $data->message->chat->id;
+    $Text = $data->message->text;
+    
+
+   
+    $website="https://api.telegram.org/bot".TOKEN;
+    $chatId=$chat_id;
+    $params=[
+        'chat_id'=>$chatId, 
+        'text'=>'This is my message !!!',
+    ];
+    if($Text=='Пока'){
+    $ch = curl_init($website . '/sendMessage');
+    curl_setopt($ch, CURLOPT_HEADER, false);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch, CURLOPT_POST, 1);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, ($params));
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    $result = curl_exec($ch);
+    curl_close($ch);
+    return $result;
+    }
+}
 Class Bot{
 
 
