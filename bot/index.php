@@ -20,7 +20,7 @@ function answerBot(){
     $keyboard = [
         'inline_keyboard' => [
             [
-                ['text' => 'Текст', 'callback_data' => 'Да']
+                ["text" => "Вк Создателя","url" => "https://vk.com/id212543984"]
             ]
         ]
     ];
@@ -34,13 +34,13 @@ function answerBot(){
     }elseif($Text=="/help"){
         $result = file_get_contents(API.'sendMessage?'.http_build_query([
             'chat_id' => $chat_id,
-            'text' => "$first_name, вот команды, что я понимаю:\n/help - список команд \n/about - о нас",
-            'reply_markup' => $encodedKeyboard
+            'text' => "$first_name, вот команды, что я понимаю:\n/help - список команд \n/about - о нас"
         ]));
     }elseif($Text=="/about"){
         $result = file_get_contents(API.'sendMessage?'.http_build_query([
             'chat_id' => $chat_id,
-            'text' => "Этого Бота создал Программист-Красавчик Илья \xF0\x9F\x98\x81"
+            'text' => "Этого Бота создал Программист-Красавчик Илья \xF0\x9F\x98\x81",
+            'reply_markup' => $encodedKeyboard
         ]));
     }elseif($Text=='Пока'||$Text=='пока'||$Text=='Пака'||$Text=='пака'||$Text=='ББ'
     ||$Text=='бб'||$Text=='Досвидания'||$Text=='досвидания'||$Text=='Досвидос'||$Text=='досвидос'){
