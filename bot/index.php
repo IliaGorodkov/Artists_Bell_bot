@@ -1,11 +1,5 @@
 <?php
 
-define('TOKEN', getenv('token'));
-define('API','https://api.telegram.org/bot'.TOKEN.'/');
-
-
-
-
 Class myBot{
 
 function answerBot(){
@@ -60,17 +54,16 @@ function answerBot(){
         'text' => 'Досвидания '.$first_name."\xF0\x9F\x91\x8B"
         ]);
     }
-
-   
 }
 
 function botApiQuery($method, $fields = array()){
 
-    $data = json_decode(file_get_contents('php://input'));
-
-    $website="https://api.telegram.org/bot".TOKEN;
+    define('TOKEN', getenv('token'));
+    define('API','https://api.telegram.org/bot'.TOKEN.'/');
     
-    $ch = curl_init($website .'/'.$method);
+    $data = json_decode(file_get_contents('php://input'));
+    
+    $ch = curl_init(API.$method);
     curl_setopt($ch, CURLOPT_HEADER, false);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
     curl_setopt($ch, CURLOPT_POST, 1);
