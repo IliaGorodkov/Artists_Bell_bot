@@ -81,7 +81,7 @@ function actionKeyboardButton()
 
     $this->botApiQuery("sendMessage", [
         "chat_id" => $chat_id,
-        "text" => "Обработана кнопка " . $Text
+        "text" => "Обработана кнопка " . $buttons
     ]);
 }
 
