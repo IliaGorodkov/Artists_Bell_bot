@@ -29,11 +29,7 @@ function answerBot(){
     if($Text=="/start"||$Text=='Привет'||$Text=='привет'){
         $result = file_get_contents(API.'sendMessage?'.http_build_query([
             'chat_id' => $chat_id,
-            'text' => "Привет, $first_name \xF0\x9F\x91\x8B, вот команды, что я понимаю:\n/help - список команд \n/about - о нас",
-            'reply_markup' => $encodedKeyboard,
-            'keyboard' => "/start",
-            'resize_keyboard' => true,
-            'one_time_keyboard' => false
+            'text' => "Привет, $first_name \xF0\x9F\x91\x8B, вот команды, что я понимаю:\n/help - список команд \n/about - о нас"
         ]));
     }elseif($Text=="/help"){
         $result = file_get_contents(API.'sendMessage?'.http_build_query([
