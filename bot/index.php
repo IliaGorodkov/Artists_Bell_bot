@@ -3,6 +3,11 @@
 define('TOKEN', getenv('token'));
 define('API','https://api.telegram.org/bot'.TOKEN.'/');
 
+
+
+
+Class Bot{
+
 function answerBot(){
     $data = json_decode(file_get_contents('php://input'));
 
@@ -57,36 +62,32 @@ function answerBot(){
             'text' => 'Досвидания '.$first_name."\xF0\x9F\x91\x8B"
         ]));
         */
-        return botApiQuery("sendMessage", ['chat_id' => $chat_id,
+        $this->botApiQuery("sendMessage", ['chat_id' => $chat_id,
         'text' => 'Досвидания '.$first_name."\xF0\x9F\x91\x8B"
         ]);
     }
 
 
-/** Запрос к Телеграм Bot Api
-     * @param $method
-     * @param array $fields
-     * @return mixed
-     */
+}
 
- function botApiQuery($method, $fields = array()){
+function botApiQuery($method, $fields = array()){
 
-        $ch = curl_init("https://api.telegram.org/bot" .API. $method. http_build_query($fields));
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-        curl_setopt($ch, CURLOPT_HEADER, false);
-        $result = curl_exec($ch);
-        curl_close($ch);
-        return $result;
+    $ch = curl_init("https://api.telegram.org/bot" .API. $method. http_build_query($fields));
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($ch, CURLOPT_HEADER, false);
+    $resultQuery = curl_exec($ch);
+    curl_close($ch);
+    return $resultQuery;
 
-        
+    
 }
 
 
 
+
+
 }
-
-
 
 
 
