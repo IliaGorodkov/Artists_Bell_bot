@@ -57,7 +57,7 @@ function answerBot(){
             'text' => 'Досвидания '.$first_name."\xF0\x9F\x91\x8B"
         ]));
         */
-        botApiQuery("sendMessage", ['chat_id' => $chat_id,
+        echo botApiQuery("sendMessage", ['chat_id' => $chat_id,
         'text' => 'Досвидания '.$first_name."\xF0\x9F\x91\x8B"
         ]);
     }
