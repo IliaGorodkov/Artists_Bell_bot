@@ -12,7 +12,7 @@ function answerBot(){
     $keyboard = [
         'inline_keyboard' => [
             [
-                ["text" => "Вк Создателя","url" => "https://vk.com/id212543984"]
+                ["text" => "Его Вк","url" => "https://vk.com/id212543984"]
             ]
         ]
     ];
@@ -46,6 +46,7 @@ function answerBot(){
         $this->botApiQuery("sendMessage",[
         'chat_id' => $chat_id,
         'text' => "Этого Бота создал Программист-Красавчик Илья \xF0\x9F\x98\x81",
+        'reply_markup' => $encodedKeyboard
         ]);
     }elseif($Text=='Пока'||$Text=='пока'||$Text=='Пака'||$Text=='пака'||$Text=='ББ'
     ||$Text=='бб'||$Text=='Досвидания'||$Text=='досвидания'||$Text=='Досвидос'||$Text=='досвидос'){
@@ -62,7 +63,7 @@ function botApiQuery($method, $fields = array()){
     define('API','https://api.telegram.org/bot'.TOKEN.'/');
     
     $data = json_decode(file_get_contents('php://input'));
-    
+
     $ch = curl_init(API.$method);
     curl_setopt($ch, CURLOPT_HEADER, false);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -72,7 +73,6 @@ function botApiQuery($method, $fields = array()){
     $result = curl_exec($ch);
     curl_close($ch);
     return $result;
-
 } 
 
 }
