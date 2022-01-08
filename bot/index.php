@@ -51,7 +51,7 @@ function answerBot(){
     }elseif($Text=="/about"){
         $this->botApiQuery("sendMessage",[
         'chat_id' => $chat_id,
-        'text' => "Этого Бота создал Программист-Красавчик Илья \xF0\x9F\x98\x81",
+        'text' => "Этого Бота создал Программист-Красавчик Илья222 \xF0\x9F\x98\x81",
         ]);
     }elseif($Text=='Пока'||$Text=='пока'||$Text=='Пака'||$Text=='пака'||$Text=='ББ'
     ||$Text=='бб'||$Text=='Досвидания'||$Text=='досвидания'||$Text=='Досвидос'||$Text=='досвидос'){
