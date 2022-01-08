@@ -44,6 +44,10 @@ function answerBot(){
         'text' => 'Досвидания '.$first_name."\xF0\x9F\x91\x8B"
         ]);
     }
+
+
+  
+
 }
 
 function botApiQuery($method, $fields = array()){
@@ -64,24 +68,20 @@ function botApiQuery($method, $fields = array()){
     return $result;
 } 
 
- function actionKeyboardButton(){
-    $data = json_decode(file_get_contents('php://input'));
-
+function actionKeyboardButton()
+{   $data = json_decode(file_get_contents('php://input'));
     $chat_id = $data->message->chat->id;
     $Text = $data->message->text;
-    $first_name = $data->message->from->first_name;
-
     $buttons = json_encode(["keyboard" => [
         ["text" => "Button 1_1"],["text" => "Button 1_2"]
         ],'one_time_keyboard' => false,
         'resize_keyboard' => true,
         'selective' => true,
-        ], true);
+    ], true);
 
     $this->botApiQuery("sendMessage", [
         "chat_id" => $chat_id,
-        "text" => "Обработана кнопка ".$Text,
-        "reply_markup" => $buttons
+        "text" => "Обработана кнопка " . $Text
     ]);
 }
 
@@ -90,6 +90,6 @@ function botApiQuery($method, $fields = array()){
 }
 
 $Bot = new myBot;
-$Bot->answerBot();
+$Bot->answerBot().$Bot->actionKeyboardButton();
 //'reply_markup' => $encodedKeyboard
 ?>
