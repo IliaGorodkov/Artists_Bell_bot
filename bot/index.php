@@ -20,7 +20,8 @@ function answerBot(){
     $encodedKeyboard = json_encode($keyboard,true);
     
     $buttons = [
-        "keyboard" => [[
+        "keyboard" => [
+        [
             ["text" => "Button 1_1",],
             ["text" => "Button 1_2",]
         ],
