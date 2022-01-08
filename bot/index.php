@@ -57,13 +57,17 @@ function answerBot(){
             'text' => 'Досвидания '.$first_name."\xF0\x9F\x91\x8B"
         ]));
         */
-        echo botApiQuery("sendMessage", ['chat_id' => $chat_id,
+        botApiQuery("sendMessage", ['chat_id' => $chat_id,
         'text' => 'Досвидания '.$first_name."\xF0\x9F\x91\x8B"
         ]);
     }
 
 
-
+/** Запрос к Телеграм Bot Api
+     * @param $method
+     * @param array $fields
+     * @return mixed
+     */
 
  function botApiQuery($method, $fields = array())
     {
