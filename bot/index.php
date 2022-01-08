@@ -19,7 +19,7 @@ function answerBot(){
     ];
     $encodedKeyboard = json_encode($keyboard,true);
     
-    $buttons = json_encode([
+    $buttons = [
         "keyboard" => [[
             ["text" => "Button 1_1",],
             ["text" => "Button 1_2",]
@@ -27,13 +27,16 @@ function answerBot(){
         'one_time_keyboard' => false,
         'resize_keyboard' => true,
         'selective' => true,], true
-    ]);
+    ];
+    $buttonsKeyboard = json_encode($buttons,true);
+
+
 
     if($Text=="/start"||$Text=='Привет'||$Text=='привет'){
         $result = file_get_contents(API.'sendMessage?'.http_build_query([
             'chat_id' => $chat_id,
             'text' => "Привет, $first_name \xF0\x9F\x91\x8B, вот команды, что я понимаю:\n/help - список команд \n/about - о нас",
-            'reply_markup' => $buttons
+            'reply_markup' => $buttonsKeyboard
         ]));
     }elseif($Text=="/help"){
         $result = file_get_contents(API.'sendMessage?'.http_build_query([
