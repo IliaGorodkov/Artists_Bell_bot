@@ -78,14 +78,14 @@ function botApiQuery(){
     $Text = $data->message->text;
     
 
-
+    if($Text=='Пока'){
     $website="https://api.telegram.org/bot".TOKEN;
     $chatId=$chat_id;
     $params=[
         'chat_id'=>$chatId, 
         'text'=>'This is my message !!!',
     ];
-    if($Text=='Пока'){
+    
     $ch = curl_init($website . '/sendMessage');
     curl_setopt($ch, CURLOPT_HEADER, false);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
