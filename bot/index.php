@@ -54,8 +54,6 @@ function botApiQuery($method, $fields = array()){
 
     define('TOKEN', getenv('token'));
     define('API','https://api.telegram.org/bot'.TOKEN.'/');
-    
-    $data = json_decode(file_get_contents('php://input'));
 
     $ch = curl_init(API.$method);
     curl_setopt($ch, CURLOPT_HEADER, false);
@@ -68,28 +66,9 @@ function botApiQuery($method, $fields = array()){
     return $result;
 } 
 
-function actionKeyboardButton()
-{   $data = json_decode(file_get_contents('php://input'));
-    $chat_id = $data->message->chat->id;
-    $Text = $data->message->text;
-    $buttons = json_encode(["keyboard" => [
-        ["text" => "Button 1_1"],["text" => "Button 1_2"]
-        ],'one_time_keyboard' => false,
-        'resize_keyboard' => true,
-        'selective' => true,
-    ], true);
-
-    $this->botApiQuery("sendMessage", [
-        "chat_id" => $chat_id,
-        "text" => "Обработана кнопка " . $buttons
-    ]);
-}
-
-
-
 }
 
 $Bot = new myBot;
-$Bot->answerBot().$Bot->actionKeyboardButton();
-//'reply_markup' => $encodedKeyboard
+$Bot->answerBot();
+
 ?>
