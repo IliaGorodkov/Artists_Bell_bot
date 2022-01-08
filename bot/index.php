@@ -57,16 +57,15 @@ function answerBot(){
             'text' => 'Досвидания '.$first_name."\xF0\x9F\x91\x8B"
         ]));
         */
-        botApiQuery("sendMessage", [
-            "chat_id" => $chat_id,
-            "text" =>  'Досвидания '.$first_name."\xF0\x9F\x91\x8B"
+        botApiQuery("sendMessage", ['chat_id' => $chat_id,
+        'text' => 'Досвидания '.$first_name."\xF0\x9F\x91\x8B"
         ]);
     }
 
 
 
 
-    function botApiQuery($method, $fields = array())
+ function botApiQuery($method, $fields = array())
     {
         $ch = curl_init("https://api.telegram.org/bot" .API. $method);
         curl_setopt_array($ch, array(
@@ -79,12 +78,12 @@ function answerBot(){
         $result = json_decode(curl_exec($ch), true);
         curl_close($ch);
         return $result;
-    }
+}
 
 
 
 }
-answerBot();
+
 
 
 
