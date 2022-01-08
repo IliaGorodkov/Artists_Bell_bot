@@ -18,18 +18,7 @@ function answerBot(){
     ];
     $encodedKeyboard = json_encode($keyboard,true);
     
-    $buttons = [
-        "keyboard" => [
-        [
-            ["text" => "Button 1_1",],
-            ["text" => "Button 1_2",]
-        ],
-        'one_time_keyboard' => false,
-        'resize_keyboard' => true,
-        'selective' => true,], true
-    ];
-    $buttonsKeyboard = json_encode($buttons,true);
-
+  
 
 
     if($Text=="/start"||$Text=='Привет'||$Text=='привет'){
@@ -81,10 +70,18 @@ function botApiQuery($method, $fields = array()){
     $chat_id = $data->message->chat->id;
     $Text = $data->message->text;
     $first_name = $data->message->from->first_name;
-    
+
+    $buttons = json_encode(["keyboard" => [
+        ["text" => "Button 1_1"],["text" => "Button 1_2"]
+        ],'one_time_keyboard' => false,
+        'resize_keyboard' => true,
+        'selective' => true,
+        ], true);
+
     $this->botApiQuery("sendMessage", [
-        "chat_id" => $this->userId,
+        "chat_id" => $chat_id,
         "text" => "Обработана кнопка ".$Text,
+        "reply_markup" => $buttons
     ]);
 }
 
