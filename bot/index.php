@@ -75,6 +75,21 @@ function botApiQuery($method, $fields = array()){
     return $result;
 } 
 
+ function actionKeyboardButton(){
+    $data = json_decode(file_get_contents('php://input'));
+
+    $chat_id = $data->message->chat->id;
+    $Text = $data->message->text;
+    $first_name = $data->message->from->first_name;
+    
+    $this->botApiQuery("sendMessage", [
+        "chat_id" => $this->userId,
+        "text" => "Обработана кнопка ".$Text,
+    ]);
+}
+
+
+
 }
 
 $Bot = new myBot;
