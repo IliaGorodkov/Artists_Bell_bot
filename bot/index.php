@@ -5,65 +5,8 @@ define('API','https://api.telegram.org/bot'.TOKEN.'/');
 
 
 
-function botApiQuery(){
 
-    $data = json_decode(file_get_contents('php://input'));
-
-    $chat_id = $data->message->chat->id;
-    $Text = $data->message->text;
-    
-
-   
-    $website="https://api.telegram.org/bot".TOKEN;
-    $chatId=$chat_id;
-    $params=[
-        'chat_id'=>$chatId, 
-        'text'=>'This is my message !!!',
-    ];
-    if($Text=='Пока'){
-    $ch = curl_init($website . '/sendMessage');
-    curl_setopt($ch, CURLOPT_HEADER, false);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    curl_setopt($ch, CURLOPT_POST, 1);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, ($params));
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-    $result = curl_exec($ch);
-    curl_close($ch);
-    return $result;
-    }
-}
 Class Bot{
-
-
-
-    function botApiQuery(){
-
-        $data = json_decode(file_get_contents('php://input'));
-    
-        $chat_id = $data->message->chat->id;
-        $Text = $data->message->text;
-        
-    
-        if($Text=='Пока'){
-        $website="https://api.telegram.org/bot".TOKEN;
-        $chatId=$chat_id;
-        $params=[
-            'chat_id'=>$chatId, 
-            'text'=>'This is my message !!!',
-        ];
-        
-        $ch = curl_init($website . '/sendMessage');
-        curl_setopt($ch, CURLOPT_HEADER, false);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch, CURLOPT_POST, 1);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, ($params));
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-        $result = curl_exec($ch);
-        curl_close($ch);
-        return $result;
-        }
-    }
-
 
 function answerBot(){
     $data = json_decode(file_get_contents('php://input'));
@@ -98,8 +41,7 @@ function answerBot(){
     if($Text=="/start"||$Text=='Привет'||$Text=='привет'){
         $result = file_get_contents(API.'sendMessage?'.http_build_query([
             'chat_id' => $chat_id,
-            'text' => "Привет, $first_name \xF0\x9F\x91\x8B, вот команды, что я понимаю:\n/help - список команд \n/about - о нас",
-            'reply_markup' => $buttonsKeyboard
+            'text' => "Привет, $first_name \xF0\x9F\x91\x8B, вот команды, что я понимаю:\n/help - список команд \n/about - о нас"
         ]));
     }elseif($Text=="/help"){
         $result = file_get_contents(API.'sendMessage?'.http_build_query([
@@ -114,11 +56,11 @@ function answerBot(){
         ]));
     }elseif($Text=='Пока'||$Text=='пока'||$Text=='Пака'||$Text=='пака'||$Text=='ББ'
     ||$Text=='бб'||$Text=='Досвидания'||$Text=='досвидания'||$Text=='Досвидос'||$Text=='досвидос'){
-        /*$result = file_get_contents(API.'sendMessage?'.http_build_query([
+        $result = file_get_contents(API.'sendMessage?'.http_build_query([
             'chat_id' => $chat_id,
             'text' => 'Досвидания '.$first_name."\xF0\x9F\x91\x8B"
         ]));
-        
+        /*
         $this->botApiQuery("sendMessage", ['chat_id' => $chat_id,
         'text' => 'Досвидания '.$first_name."\xF0\x9F\x91\x8B"
         ]);*/
@@ -126,13 +68,38 @@ function answerBot(){
 
 
 }
+/*
+function botApiQuery(){
+
+    $data = json_decode(file_get_contents('php://input'));
+
+    $chat_id = $data->message->chat->id;
+    $Text = $data->message->text;
+    
+
+if($Text=='Пока'){
+    $website="https://api.telegram.org/bot".TOKEN;
+    $chatId=$chat_id;
+    $params=[
+        'chat_id'=>$chatId, 
+        'text'=>'This is my message !!!',
+    ];
+    
+    $ch = curl_init($website . '/sendMessage');
+    curl_setopt($ch, CURLOPT_HEADER, false);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch, CURLOPT_POST, 1);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, ($params));
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    $result = curl_exec($ch);
+    curl_close($ch);
+    return $result;
+}
+}
 
 
 
-
-
-
-
+*/
 }
 
 
