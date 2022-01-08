@@ -66,7 +66,7 @@ function answerBot(){
         ]);*/
     }
 
-
+   
 }
 /*
 function botApiQuery(){
@@ -95,13 +95,15 @@ if($Text=='Пока'){
     curl_close($ch);
     return $result;
 }
-}
+} 
 
 
-
+$this->answerBot();
 */
+
 }
 
-
+$Bott = new Bot;
+$Bott->answerBot();
 
 ?>
