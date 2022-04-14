@@ -36,7 +36,7 @@ function answerBot(){
 
 
     $mysqli = new mysqli($host, $db, $user, $pass);
-    if ($Text || $mysqli->connect_errno) {
+    if ($Text=='123') {
         $this->botApiQuery("sendMessage",[
         'chat_id' => "1307855636",
         'text' => "Не удалось подключиться к БД ('.$mysqli->connect_errno.': '.$mysqli->connect_error.') для пользователя с user_id: .$chat_id"
