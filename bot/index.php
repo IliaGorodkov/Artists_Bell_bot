@@ -43,6 +43,10 @@ function answerBot(){
         'chat_id' => $chat_id,
         'text' => 'Досвидания '.$first_name."\xF0\x9F\x91\x8B"
         ]);
+    }elseif($Text=='Данные пользователя'){
+        $this->botApiQuery("sendMessage",[
+        'chat_id' => $chat_id,
+        'text' => "22222222222222222"]);
     }
 
 }
