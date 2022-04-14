@@ -8,6 +8,7 @@ function answerBot(){
     $chat_id = $data->message->chat->id;
     $Text = $data->message->text;
     $first_name = $data->message->from->first_name;
+    $username =  $data->message->username;
 
     date_default_timezone_set('Europe/Volgograd');
     $time_today = date("H:i:s");
@@ -46,7 +47,11 @@ function answerBot(){
     }elseif($Text=='Д'){
         $this->botApiQuery("sendMessage",[
         'chat_id' => $chat_id,
-        'text' => "$data->message->chat"]);
+        'text' => "$chat_id"]);
+    }elseif($Text=='у'){
+        $this->botApiQuery("sendMessage",[
+        'chat_id' => $chat_id,
+        'text' => "$username"]);
     }
 
 }
