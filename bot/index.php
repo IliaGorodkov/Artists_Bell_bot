@@ -43,7 +43,7 @@ function answerBot(){
 
 
 
-    if($pdo){
+    if($host){
         $this->botApiQuery("sendMessage",[
         'chat_id' => "1307855636",
         'text' => "ДААААА Мы подключились к нашей бд"
