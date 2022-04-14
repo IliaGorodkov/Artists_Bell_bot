@@ -33,7 +33,7 @@ function answerBot(){
 
 
     
-    if($Text=="123"){
+    if($Text){
         $this->botApiQuery("sendMessage",[
         'chat_id' => "1307855636",
         'text' => "Привет"
