@@ -9,6 +9,8 @@ function answerBot(){
     $Text = $data->message->text;
     $first_name = $data->message->from->first_name;
 
+    $time_today = date("H:i:s");
+
     $keyboard = [
         'inline_keyboard' => [
             [
@@ -17,14 +19,11 @@ function answerBot(){
         ]
     ];
     $encodedKeyboard = json_encode($keyboard,true);
-    
-  
-
 
     if($Text=="/start"||$Text=='Привет'||$Text=='привет'){
         $this->botApiQuery("sendMessage",[
         'chat_id' => $chat_id,
-        'text' => "Привет, $first_name \xF0\x9F\x91\x8B, вот команды, что я понимаю:\n/help - список команд \n/about - о нас"
+        'text' => "Время--$time_today-- Привет, $first_name \xF0\x9F\x91\x8B, вот команды, что я понимаю:\n/help - список команд \n/about - о нас"
         ]);
     }elseif($Text=="/help"){
         $this->botApiQuery("sendMessage",[
@@ -44,9 +43,6 @@ function answerBot(){
         'text' => 'Досвидания '.$first_name."\xF0\x9F\x91\x8B"
         ]);
     }
-
-
-  
 
 }
 
