@@ -31,8 +31,8 @@ function answerBot(){
     $pass = 'root';//пароль аккаунта
     $charset = 'utf8';//кодировка
     $dsn = "mysql:host=$host;dbname=$db;charset=$charset;root=$user;password=$pass";
-    /*
     
+
     $opt = [
         PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
@@ -40,12 +40,13 @@ function answerBot(){
     ];
     $pdo = new PDO($dsn, $user, $pass, $opt);
     
+    if($Text){
+        $sql = 'INSERT INTO users VALUES(:id,:text,:first_name,:username)';
+        $query = $pdo->prepare($sql);//Создание подготовленного запроса
+        $query->execute(['id'=> NULL,'text'=>$Text,'first_name'=>$first_name,'username'=>$username ]);
+    };
     
     
-    $sql = 'INSERT INTO users  VALUES(:id,:first_name,:text,:username)';
-    $query = $pdo->prepare($sql);//Создание подготовленного запроса
-    $query->execute(['id'=> NULL,'first_name'=>$first_name,'text'=>$Text,'username'=>$username ]);
-    */
 
     if($Text=="/start"||$Text=='Привет'||$Text=='привет'){
         $this->botApiQuery("sendMessage",[
