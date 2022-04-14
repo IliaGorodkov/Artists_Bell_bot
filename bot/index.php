@@ -36,11 +36,17 @@ function answerBot(){
 
 
     $mysqli = new mysqli($host, $db, $user, $pass);
-    if ($Text=="Статус бд" && $mysqli->connect_errno) {
+    if ($mysqli->connect_errno) {
         $this->botApiQuery("sendMessage",[
-        'chat_id' => $chat_id,
+        'chat_id' => "1307855636",
         'text' => "Не удалось подключиться к БД ('.$mysqli->connect_errno.': '.$mysqli->connect_error.') для пользователя с user_id: .$chat_id"
         ]);
+    }else{
+        $this->botApiQuery("sendMessage",[
+            'chat_id' => "1307855636",
+            'text' => "Мы подключились к бд"
+            ]);
+
     }
 
     if($Text=="/start"||$Text=='Привет'||$Text=='привет'){
