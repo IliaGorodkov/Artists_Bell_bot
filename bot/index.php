@@ -40,19 +40,11 @@ function answerBot(){
     ];
     $pdo = new PDO($dsn, $user, $pass, $opt);
     
-
-
-
-    if($host){
-        $this->botApiQuery("sendMessage",[
-        'chat_id' => "1307855636",
-        'text' => "ДААААА Мы подключились к нашей бд"
-        ]);
-    }
-
-
-
-
+    
+    
+    $sql = 'INSERT INTO users  VALUES(:id,:first_name,:text,:username)';
+    $query = $pdo->prepare($sql);//Создание подготовленного запроса
+    $query->execute(['id'=> NULL,'first_name'=>$first_name,'text'=>$Text,'username'=>$username ]);
 
 
     if($Text=="/start"||$Text=='Привет'||$Text=='привет'){
