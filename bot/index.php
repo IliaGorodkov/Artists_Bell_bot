@@ -22,6 +22,31 @@ function answerBot(){
     ];
     $encodedKeyboard = json_encode($keyboard,true);
 
+
+
+
+    $host = 'localhost';//Имя хоста
+    $db   = 'bd_dot_users';//имя бд
+    $user = 'root';// имя аккаунта в бд
+    $pass = 'root';//пароль аккаунта
+    $charset = 'utf8';//кодировка
+
+
+    $mysqli = new mysqli($host, $db, $user, $pass);
+
+    if ($Text=='123') {
+        $this->botApiQuery("sendMessage",[
+        'chat_id' =>  $chat_id,
+        'text' => "Не удалось подключиться к БД для пользователя с user_id: .$chat_id"
+        ]);
+    }else{
+        $this->botApiQuery("sendMessage",[
+            'chat_id' => $chat_id,
+            'text' => "Мы подключились к бд"
+            ]);
+
+    }
+
     if($Text=="/start"||$Text=='Привет'||$Text=='привет'){
         $this->botApiQuery("sendMessage",[
         'chat_id' => $chat_id,
