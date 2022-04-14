@@ -8,7 +8,7 @@ function answerBot(){
     $chat_id = $data->message->chat->id;
     $Text = $data->message->text;
     $first_name = $data->message->from->first_name;
-    $username =  $data->message->username;
+    $username = $data->message->from->username;
 
     date_default_timezone_set('Europe/Volgograd');
     $time_today = date("H:i:s");
