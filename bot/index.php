@@ -32,21 +32,6 @@ function answerBot(){
     $charset = 'utf8';//кодировка
 
 
-    $mysqli = new mysqli($host, $db, $user, $pass);
-
-    if ($Text=='123') {
-        $this->botApiQuery("sendMessage",[
-        'chat_id' =>  $chat_id,
-        'text' => "Не удалось подключиться к БД для пользователя с user_id: .$chat_id"
-        ]);
-    }else{
-        $this->botApiQuery("sendMessage",[
-            'chat_id' => $chat_id,
-            'text' => "Мы подключились к бд"
-            ]);
-
-    }
-
     if($Text=="/start"||$Text=='Привет'||$Text=='привет'){
         $this->botApiQuery("sendMessage",[
         'chat_id' => $chat_id,
