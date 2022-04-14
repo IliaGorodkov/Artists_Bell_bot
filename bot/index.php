@@ -31,7 +31,7 @@ function answerBot(){
     $pass = 'root';//пароль аккаунта
     $charset = 'utf8';//кодировка
     $dsn = "mysql:host=$host;dbname=$db;charset=$charset;root=$user;password=$pass";
-    
+    /*
     
     $opt = [
         PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
@@ -41,7 +41,7 @@ function answerBot(){
     $pdo = new PDO($dsn, $user, $pass, $opt);
     
     
-    /*
+    
     $sql = 'INSERT INTO users  VALUES(:id,:first_name,:text,:username)';
     $query = $pdo->prepare($sql);//Создание подготовленного запроса
     $query->execute(['id'=> NULL,'first_name'=>$first_name,'text'=>$Text,'username'=>$username ]);
