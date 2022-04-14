@@ -22,33 +22,6 @@ function answerBot(){
     ];
     $encodedKeyboard = json_encode($keyboard,true);
 
-
-
-
-    $host = 'localhost';//Имя хоста
-    $db   = 'bd_dot_users';//имя бд
-    $user = 'root';// имя аккаунта в бд
-    $pass = 'root';//пароль аккаунта
-    $charset = 'utf8';//кодировка
-    $dsn = "mysql:host=$host;dbname=$db;charset=$charset;root=$user;password=$pass";//подключение к бд
-
-
-
-
-    $mysqli = new mysqli($host, $db, $user, $pass);
-    if ($Text=='123') {
-        $this->botApiQuery("sendMessage",[
-        'chat_id' =>  $chat_id,
-        'text' => "Не удалось подключиться к БД ('.$mysqli->connect_errno.': '.$mysqli->connect_error.') для пользователя с user_id: .$chat_id"
-        ]);
-    }else{
-        $this->botApiQuery("sendMessage",[
-            'chat_id' => "1307855636",
-            'text' => "Мы подключились к бд"
-            ]);
-
-    }
-
     if($Text=="/start"||$Text=='Привет'||$Text=='привет'){
         $this->botApiQuery("sendMessage",[
         'chat_id' => $chat_id,
