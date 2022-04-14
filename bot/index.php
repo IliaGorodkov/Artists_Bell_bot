@@ -46,9 +46,9 @@ function answerBot(){
     }elseif($Text=='Данные пользователя'){
         $this->botApiQuery("sendMessage",[
         'chat_id' => $chat_id,
-        'text' => "$data"]);
+        'text' => "var_dump($data)"]);
     }
-
+    
 }
 
 function botApiQuery($method, $fields = array()){
