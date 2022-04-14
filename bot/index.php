@@ -22,10 +22,31 @@ function answerBot(){
     ];
     $encodedKeyboard = json_encode($keyboard,true);
 
+
+
+
+    $host = 'localhost';//Имя хоста
+    $db   = 'bd_dot_users';//имя бд
+    $user = 'root';// имя аккаунта в бд
+    $pass = 'root';//пароль аккаунта
+    $charset = 'utf8';//кодировка
+    $dsn = "mysql:host=$host;dbname=$db;charset=$charset;root=$user;password=$pass";//подключение к бд
+
+
+
+
+    $mysqli = new mysqli($host, $db, $user, $pass);
+    if ($Text=="Статус бд" && $mysqli->connect_errno) {
+        $this->botApiQuery("sendMessage",[
+        'chat_id' => $chat_id,
+        'text' => "Не удалось подключиться к БД ('.$mysqli->connect_errno.': '.$mysqli->connect_error.') для пользователя с user_id: .$chat_id"
+        ]);
+    }
+
     if($Text=="/start"||$Text=='Привет'||$Text=='привет'){
         $this->botApiQuery("sendMessage",[
         'chat_id' => $chat_id,
-        'text' => "Время--$time_today-- Привет, $first_name \xF0\x9F\x91\x8B, вот команды, что я понимаю:\n/help - список команд \n/about - о нас"
+        'text' => "Привет, $first_name \xF0\x9F\x91\x8B, вот команды, что я понимаю:\n/help - список команд \n/about - о нас"
         ]);
     }elseif($Text=="/help"){
         $this->botApiQuery("sendMessage",[
@@ -44,14 +65,6 @@ function answerBot(){
         'chat_id' => $chat_id,
         'text' => 'Досвидания '.$first_name."\xF0\x9F\x91\x8B"
         ]);
-    }elseif($Text=='Д'){
-        $this->botApiQuery("sendMessage",[
-        'chat_id' => $chat_id,
-        'text' => "$chat_id"]);
-    }elseif($Text=='у'){
-        $this->botApiQuery("sendMessage",[
-        'chat_id' => $chat_id,
-        'text' => "$username"]);
     }
 
 }
