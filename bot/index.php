@@ -32,6 +32,19 @@ function answerBot(){
     $charset = 'utf8';//кодировка
 
 
+    
+    if($Text=="123"){
+        $this->botApiQuery("sendMessage",[
+        'chat_id' => "1307855636",
+        'text' => "Привет"
+        ]);
+    }
+
+
+
+
+
+
     if($Text=="/start"||$Text=='Привет'||$Text=='привет'){
         $this->botApiQuery("sendMessage",[
         'chat_id' => $chat_id,
