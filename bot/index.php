@@ -9,6 +9,7 @@ function answerBot(){
     $Text = $data->message->text;
     $first_name = $data->message->from->first_name;
 
+    date_default_timezone_set('Europe/Volgograd');
     $time_today = date("H:i:s");
 
     $keyboard = [
