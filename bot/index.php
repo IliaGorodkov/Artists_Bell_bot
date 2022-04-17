@@ -22,6 +22,7 @@ function answerBot(){
     ];
     $encodedKeyboard = json_encode($keyboard,true);
     
+    echo '222222222222222222222222222222222';
 
     if($Text=="/start"||$Text=='Привет'||$Text=='привет'){
         $this->botApiQuery("sendMessage",[
